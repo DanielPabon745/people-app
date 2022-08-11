@@ -33,8 +33,8 @@ public class ManagementService {
                 .collect(Collectors.toList());
     }
 
-    public List<PeopleResponse> getRandomData(Gender gender, Nationality nationality, short peopleNumber, short activities) {
-        return this.peopleService.getPeople(gender.label, nationality.name(), peopleNumber).getResults().stream()
+    public List<PeopleResponse> getRandomData(Gender gender, String nationality, short peopleNumber, short activities) {
+        return this.peopleService.getPeople(gender.label, nationality, peopleNumber).getResults().stream()
                 .map(person -> PeopleResponse
                         .builder()
                         .name(person.getName().getFirst().concat(" ").concat(person.getName().getLast()))
@@ -47,8 +47,8 @@ public class ManagementService {
                 .collect(Collectors.toList());
     }
 
-    public List<PeopleResponse> getPeopleAndActivitiesByNationality(Gender gender, Nationality nationality, short peopleNumber) {
-        return this.peopleService.getPeople(gender.label, nationality.name(), peopleNumber).getResults().stream()
+    public List<PeopleResponse> getPeopleAndActivitiesByNationality(Gender gender, String nationality, short peopleNumber) {
+        return this.peopleService.getPeople(gender.label, nationality, peopleNumber).getResults().stream()
                 .map(person -> PeopleResponse
                         .builder()
                         .name(person.getName().getFirst().concat(" ").concat(person.getName().getLast()))

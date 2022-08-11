@@ -28,9 +28,11 @@ public class AppController {
 
     @GetMapping(value = "/people")
     public ResponseEntity<List<PeopleResponse>> getRandomPeopleAndActivities(
-            @RequestParam(value = "gender")
-            @NotBlank(message = "You must put M or F") Gender gender,
-            @RequestParam(value = "nationality") @Valid Nationality nationality,
+            @RequestParam(value = "gender") @Valid Gender gender,
+            @RequestParam(value = "nationality")
+            @NotBlank(message = "Must have at least one of these values AU, BR, CA, CH, DE, " +
+                    "DK, ES, FI, FR, GB, IE, IN, IR, MX, NL, NO, NZ, RS, TR, UA, US")
+                    String nationality,
             @RequestParam(value = "people")
             @Min(value = 1, message = "People number between 1 and 10")
             @Max(value = 10, message = "People number between 1 and 10")
@@ -46,7 +48,10 @@ public class AppController {
     @GetMapping(value = "/people-nationality")
     public ResponseEntity<List<PeopleResponse>> getPeopleAndActivitiesByNationality(
             @RequestParam(value = "gender") @Valid Gender gender,
-            @RequestParam(value = "nationality") @Valid Nationality nationality,
+            @RequestParam(value = "nationality")
+            @NotBlank(message = "Must have at least one of these values AU, BR, CA, CH, DE, " +
+                    "DK, ES, FI, FR, GB, IE, IN, IR, MX, NL, NO, NZ, RS, TR, UA, US")
+                    String nationality,
             @Min(value = 1, message = "People number between 1 and 10")
             @Max(value = 10, message = "People number between 1 and 10")
             @RequestParam(value = "people") short peopleNumber
