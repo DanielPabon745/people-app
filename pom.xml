@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>io.github.wimdeblauwe</groupId>
 			<artifactId>error-handling-spring-boot-starter</artifactId>
-			<version>2.1.0</version>
+			<version>1.7.0</version>
 		</dependency>
 
 		<dependency>
